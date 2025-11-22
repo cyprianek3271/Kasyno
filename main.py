@@ -2,7 +2,7 @@ import time
 import random
 import os
 from colorama import Fore, Style, init
-
+import math
 
 
 
@@ -218,14 +218,17 @@ def Black_Jack(stawka):
     print(f"\nTwoje karty: {Fore.CYAN}{gracz_karty}{Style.RESET_ALL} = {gracz_wartosc}")
     print(f"Karty bota: {Fore.MAGENTA}{bot_karty}{Style.RESET_ALL} = {bot_wartosc}")
 
+
+
     # Wynik
     if gracz_wartosc > 21:
         print(Fore.RED + f"Przegrałeś! Tracisz {stawka}" + Style.RESET_ALL)
         
     elif gracz_wartosc > bot_wartosc or bot_wartosc > 21:
-        losowosc = int(random.uniform(1.3, 2.1))
-        print(Fore.GREEN + f"Wygrałeś! Dostajesz {stawka * losowosc})" + Style.RESET_ALL)
-        pieniadze += stawka * losowosc
+        losowosc = random.uniform(1.3, 2.1)
+        suma = math.floor(losowosc* stawka)
+        print(Fore.GREEN + f"Wygrałeś! Dostajesz {suma})" + Style.RESET_ALL)
+        pieniadze += suma
         konfetti()
     elif gracz_wartosc < bot_wartosc:
         print(Fore.RED + f"Przegrałeś! Tracisz {stawka}" + Style.RESET_ALL)
